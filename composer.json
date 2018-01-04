@@ -2,7 +2,7 @@
 	"name" : "kicaj/social",
 	"description" : "Social plugin for CakePHP",
 	"type" : "cakephp-plugin",
-	"license" : "MIT",,
+	"license" : "MIT",
     "authors": [
         {
             "name": "kicaj",
