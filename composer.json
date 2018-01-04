@@ -3,17 +3,17 @@
 	"description" : "Social plugin for CakePHP",
 	"type" : "cakephp-plugin",
 	"license" : "MIT",
-    "authors": [
-        {
-            "name": "kicaj",
-            "email": "kicaj@kdev.pl",
+	"authors": [
+		{
+			"name": "kicaj",
+			"email": "kicaj@kdev.pl",
 			"role": "Author"
-        },
-        {
-            "name": "Others",
-            "homepage": "https://github.com/kicaj/social/graphs/contributors"
-        }
-    ],
+        	},
+        	{
+            		"name": "Others",
+            		"homepage": "https://github.com/kicaj/social/graphs/contributors"
+        	}
+    	],
 	"require" : {
 		"cakephp/cakephp" : "^3.5"
 	},
