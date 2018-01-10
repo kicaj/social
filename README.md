@@ -9,3 +9,10 @@ The recommended way to install composer packages is:
 ```
 composer require kicaj/social
 ```
+
+## TODOs
+
+- [ ] Social logins
+- [ ] Social share
+- [ ] Social meta
+- [ ] Expansibility, abstract class
