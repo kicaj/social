@@ -3,6 +3,10 @@
 	"description" : "Social plugin for CakePHP",
 	"type" : "cakephp-plugin",
 	"license" : "MIT",
+	"support" : {
+		"issues" : "https://github.com/kicaj/social/issues",
+		"source" : "https://github.com/kicaj/social"
+	},
 	"authors" : [{
 			"name" : "kicaj",
 			"email" : "kicaj@kdev.pl",
