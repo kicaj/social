@@ -8,8 +8,8 @@ Configure::write('Social', [
         'login_url_query' => [
             'access_type',
             'response_type',
-            'redirect_uri',
             'client_id',
+            'redirect_uri',
             'scope',
         ],
         'redirect_uri' => '/social/logins/callback/google',
@@ -18,6 +18,12 @@ Configure::write('Social', [
         'response_type' => 'code',
     ],
     'facebook' => [
+        'login_url' => 'https://www.facebook.com/v2.11/dialog/oauth',
+        'login_url_query' => [
+            'client_id',
+            'redirect_uri',
+            'state',
+        ],
         'redirect_uri' => '/social/logins/callback/facebook',
     ],
 ]);
