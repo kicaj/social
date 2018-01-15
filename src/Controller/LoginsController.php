@@ -31,16 +31,16 @@ class LoginsController extends AppController
      */
     public function callback($provider = null)
     {
-        $provider = Configure::readOrFail('Social.' . $provider);
+        $config = Configure::readOrFail('Social.' . $provider);
 
         if (isset($this->request->query['code']) && !empty($code = $this->request->query['code'])) {
             $http = new Client();
 
             $response = $http->post('https://accounts.google.com/o/oauth2/token', [
                 'code' => $code,
-                'client_id' => $provider['client_id'],
-                'client_secret' => $provider['client_secret'],
-                'redirect_uri' => $provider['redirect_uri'],
+                'client_id' => $config['client_id'],
+                'client_secret' => $config['client_secret'],
+                'redirect_uri' => $config['redirect_uri'],
                 'grant_type' => 'authorization_code',
             ], [
                 'ssl_verify_peer' => false,
