@@ -6,6 +6,7 @@ use Cake\Core\Configure;
 use Cake\Http\Client;
 use Cake\Network\Exception\BadRequestException;
 use Cake\Datasource\Exception\RecordNotFoundException;
+use Cake\Routing\Router;
 
 class LoginsController extends AppController
 {
@@ -40,7 +41,7 @@ class LoginsController extends AppController
                 'code' => $code,
                 'client_id' => $config['client_id'],
                 'client_secret' => $config['client_secret'],
-                'redirect_uri' => $config['redirect_uri'],
+            	'redirect_uri' => Router::url('/', true) . $config['redirect_uri'],
                 'grant_type' => 'authorization_code',
             ], [
                 'ssl_verify_peer' => false,
