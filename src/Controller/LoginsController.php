@@ -5,7 +5,6 @@ use App\Controller\AppController;
 use Cake\Core\Configure;
 use Cake\Http\Client;
 use Cake\Network\Exception\BadRequestException;
-use Cake\Datasource\Exception\RecordNotFoundException;
 
 class LoginsController extends AppController
 {
@@ -36,7 +35,7 @@ class LoginsController extends AppController
         if (isset($this->request->query['code']) && !empty($code = $this->request->query['code'])) {
             $http = new Client();
 
-            $response = $http->post('https://accounts.google.com/o/oauth2/token', [
+            $response = $http->post($config['login_url']/*'https://accounts.google.com/o/oauth2/token'*/, [
                 'code' => $code,
                 'client_id' => $config['client_id'],
                 'client_secret' => $config['client_secret'],
@@ -57,6 +56,7 @@ class LoginsController extends AppController
 
                 if ($response->isOk()) {
                     echo $this->Auth->getConfig('finder');
+                    exit;
                     //$user = $this->Users->find()->wher
                     $this->Auth->setUser([
                         'email' => $response->json['email']

@@ -12,7 +12,6 @@ Configure::write('Social', [
             'redirect_uri',
             'scope',
         ],
-        'redirect_uri' => '/social/logins/callback/google',
         'scope' => 'https://www.googleapis.com/auth/userinfo.email',
         'access_type' => 'offline',
         'response_type' => 'code',
@@ -24,6 +23,5 @@ Configure::write('Social', [
             'redirect_uri',
             'state',
         ],
-        'redirect_uri' => '/social/logins/callback/facebook',
     ],
 ]);
