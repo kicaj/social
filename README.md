@@ -14,7 +14,7 @@ composer require kicaj/social dev-master
 
 ## TODOs
 
-- [ ] Social logins
+- [x] Social logins
 - [ ] Social share
 - [ ] Social meta
 - [ ] Expansibility, abstract class
