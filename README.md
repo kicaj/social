@@ -9,7 +9,7 @@ You can install this plugin into your CakePHP (3.5) application using [composer]
 The recommended way to install composer packages is:
 
 ```
-composer require kicaj/social
+composer require kicaj/social dev-master
 ```
 
 ## TODOs
