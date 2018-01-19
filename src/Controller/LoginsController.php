@@ -3,16 +3,28 @@ namespace Social\Controller;
 
 use App\Controller\AppController;
 use Cake\Core\Configure;
+<<<<<<< HEAD
 use Cake\Core\Exception\Exception;
 use Cake\ORM\TableRegistry;
 use Cake\Utility\Inflector;
 use Social\Controller\Component\Interfaces\LoginInterface;
+=======
+use Cake\Http\Client;
+use Cake\Network\Exception\BadRequestException;
+use Cake\Datasource\Exception\RecordNotFoundException;
+use Cake\Routing\Router;
+>>>>>>> origin
 
 class LoginsController extends AppController
 {
 
     /**
      * {@inheritDoc}
+<<<<<<< HEAD
+=======
+     *
+     * @see \App\Controller\AppController::initialize()
+>>>>>>> origin
      */
     public function initialize()
     {
@@ -21,6 +33,7 @@ class LoginsController extends AppController
         $this->Auth->allow([
             'callback'
         ]);
+<<<<<<< HEAD
 
         if (isset($this->request->params['pass'][0])) {
             $provider = $this->request->params['pass'][0];
@@ -44,11 +57,14 @@ class LoginsController extends AppController
         } else {
             throw new Exception('Brak providera');
         }
+=======
+>>>>>>> origin
     }
 
     /**
      * Provider callback
      *
+<<<<<<< HEAD
      * @param string $provider Name of provider
      */
     public function callback($provider)
@@ -79,6 +95,52 @@ class LoginsController extends AppController
             }
         } else {
             throw new Exception('Brak implementacji interfejsu LoginInterface');
+=======
+     * @param null|string $provider Short name of provider
+     */
+    public function callback($provider = null)
+    {
+        $config = Configure::readOrFail('Social.' . $provider);
+
+        if (isset($this->request->query['code']) && !empty($code = $this->request->query['code'])) {
+            $http = new Client();
+
+            $response = $http->post('https://accounts.google.com/o/oauth2/token', [
+                'code' => $code,
+                'client_id' => $config['client_id'],
+                'client_secret' => $config['client_secret'],
+            	'redirect_uri' => Router::url('/', true) . $config['redirect_uri'],
+                'grant_type' => 'authorization_code',
+            ], [
+                'ssl_verify_peer' => false,
+                'ssl_verify_peer_name' => false,
+            ]);
+
+            if ($response->isOk()) {
+                $response = $http->get('https://www.googleapis.com/oauth2/v3/tokeninfo', [
+                    'id_token' => $response->json['id_token']
+                ], [
+                    'ssl_verify_peer' => false,
+                    'ssl_verify_peer_name' => false,
+                ]);
+
+                if ($response->isOk()) {
+                    echo $this->Auth->getConfig('finder');
+                    //$user = $this->Users->find()->wher
+                    $this->Auth->setUser([
+                        'email' => $response->json['email']
+                    ]);
+
+                    $this->redirect($this->Auth->getConfig('loginRedirect'));
+                } else {
+                    throw new BadRequestException('A: ' . $response->json['error_description']);
+                }
+            } else {
+                throw new BadRequestException('B: ' . $response->json['error_description']);
+            }
+        } else {
+            throw new RecordNotFoundException('C');
+>>>>>>> origin
         }
     }
 }

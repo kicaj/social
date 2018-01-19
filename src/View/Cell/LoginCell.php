@@ -17,6 +17,7 @@ class LoginCell extends Cell
     {
         $config = Configure::readOrFail('Social.' . $provider);
 
+<<<<<<< HEAD
         // Add redirect_uri
         Configure::write('Social.' . $provider . '.redirect_uri', $config['redirect_uri'] = Router::url([
             'plugin' => 'Social',
@@ -24,6 +25,10 @@ class LoginCell extends Cell
             'action' => 'callback',
             $provider,
         ], true));
+=======
+        // Add fullbase URL
+        $config['redirect_uri'] = Router::url('/', true) . $config['redirect_uri'];
+>>>>>>> origin
 
         $url = $config['login_url'] . '?' . http_build_query(array_intersect_key($config, array_flip($config['login_url_query'])));
 
