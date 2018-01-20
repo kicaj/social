@@ -1,10 +1,14 @@
 # Social plugin for CakePHP
 
-It's still in development mode, do not use in production yet!
+**NOTE:** It's still in development mode, do not use in production yet!
+
+## Requirements
+
+It is developed for CakePHP 3.x.
 
 ## Installation
 
-You can install this plugin into your CakePHP (3.5) application using [composer](http://getcomposer.org).
+You can install plugin into your CakePHP application using [composer](http://getcomposer.org).
 
 The recommended way to install composer packages is:
 
@@ -12,9 +16,18 @@ The recommended way to install composer packages is:
 composer require kicaj/social dev-master
 ```
 
+Load the Plugin
+-----------
+
+Ensure the Delete plugin is loaded in your config/bootstrap.php file
+
+```
+Plugin::load('Social');
+```
+
 ## TODOs
 
-- [x] Social logins
+- [x] Social logins (Google and Facebook)
 - [ ] Social share
 - [ ] Social meta
-- [ ] Expansibility, abstract class
+- [x] Expansibility logins, interface class
