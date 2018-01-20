@@ -12,7 +12,6 @@ Configure::write('Social', [
             'redirect_uri',
             'scope',
         ],
-<<<<<<< HEAD
         'scope' => 'https://www.googleapis.com/auth/userinfo.email',
         'access_type' => 'offline',
         'response_type' => 'code',
@@ -22,18 +21,11 @@ Configure::write('Social', [
             'action' => 'callback',
             'google',
         ],
-=======
-        'redirect_uri' => 'social/logins/callback/google',
-        'scope' => 'https://www.googleapis.com/auth/userinfo.email',
-        'access_type' => 'offline',
-        'response_type' => 'code',
->>>>>>> origin
     ],
     'facebook' => [
         'login_url' => 'https://www.facebook.com/v2.11/dialog/oauth',
         'login_url_query' => [
             'client_id',
-<<<<<<< HEAD
             'response_type',
             'redirect_uri',
             'scope'
@@ -48,11 +40,3 @@ Configure::write('Social', [
         ],
     ],
 ]);
-=======
-            'redirect_uri',
-            'state',
-        ],
-        'redirect_uri' => 'social/logins/callback/facebook',
-    ],
-]);
->>>>>>> origin
