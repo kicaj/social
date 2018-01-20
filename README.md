@@ -19,7 +19,7 @@ composer require kicaj/social dev-master
 Load the Plugin
 -----------
 
-Ensure the Delete plugin is loaded in your config/bootstrap.php file
+Ensure the Social plugin is loaded in your config/bootstrap.php file
 
 ```
 Plugin::load('Social');
