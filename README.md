@@ -27,7 +27,12 @@ Plugin::load('Social');
 
 ## TODOs
 
-- [x] Social logins (Google and Facebook)
+- Social logins
+  - [x] Google
+  - [x] Facebook
+  - [ ] LinkedIn
+  - [ ] GitHub
+  - [ ] ButBucket
 - [ ] Social share
 - [ ] Social meta
 - [x] Expansibility logins, interface class
