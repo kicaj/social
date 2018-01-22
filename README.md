@@ -30,9 +30,10 @@ Plugin::load('Social');
 - Social logins
   - [x] Google
   - [x] Facebook
+  - [ ] Twitter
   - [ ] LinkedIn
   - [ ] GitHub
-  - [ ] ButBucket
+  - [ ] BitBucket
 - [ ] Social share
 - [ ] Social meta
 - [x] Expansibility logins, interface class
