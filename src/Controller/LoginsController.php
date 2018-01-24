@@ -34,8 +34,6 @@ class LoginsController extends AppController
                 $this->config['component'] = 'Social.' . Inflector::classify($provider);
             }
 
-            echo $this->config['component'];
-
             list(, $component) = pluginSplit($this->config['component']);
 
             $this->loadComponent($this->config['component'], $this->config);
