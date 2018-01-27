@@ -27,6 +27,7 @@ Plugin::load('Social');
 
 ## TODOs
 
+- [ ] Separate Sign in and Sign up
 - Social logins
   - [x] Google
   - [x] Facebook
