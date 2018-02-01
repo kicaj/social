@@ -29,7 +29,7 @@ Plugin::load('Social', [
 ```
 or add manually by `cake` command
 ```
-cake plugin -b -r Social
+cake plugin load -b -r Social
 ```
 
 ## TODOs
