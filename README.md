@@ -32,6 +32,14 @@ or add manually by `cake` command
 cake plugin load -b -r Social
 ```
 
+Usage
+-----------
+In Your config/bootstrap and provider configuration
+```
+Configure::write('Social.google.client_id', '[CLIENT_ID]');
+Configure::write('Social.google.client_secret', '[CLIENT_SECRET]');
+```
+
 ## TODOs
 
 - [ ] Separate Sign in and Sign up
