@@ -22,7 +22,14 @@ Load the Plugin
 Ensure the Social plugin is loaded in your config/bootstrap.php file
 
 ```
-Plugin::load('Social');
+Plugin::load('Social', [
+    'bootstrap' => true,
+    'routes' => true,
+]);
+```
+or add manually by `cake` command
+```
+cake plugin -b -r Social
 ```
 
 ## TODOs
