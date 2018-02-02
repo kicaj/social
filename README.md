@@ -34,7 +34,7 @@ cake plugin load -b -r Social
 
 Usage
 -----------
-In Your config/bootstrap and provider configuration
+In Your config/bootstrap add provider configurations
 ```
 Configure::write('Social.google.client_id', '[CLIENT_ID]');
 Configure::write('Social.google.client_secret', '[CLIENT_SECRET]');
