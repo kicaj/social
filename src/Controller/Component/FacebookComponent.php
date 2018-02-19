@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller\Component;
+namespace Social\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\Http\Client;
