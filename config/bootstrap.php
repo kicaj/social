@@ -39,4 +39,19 @@ Configure::write('Social', [
             'facebook',
         ],
     ],
+    'github' => [
+        'login_url' => 'https://github.com/login/oauth/authorize',
+        'login_url_query' => [
+            'client_id',
+            'redirect_uri',
+            'scope',
+        ],
+        'scope' => 'user',
+        'redirect_uri' => [
+            'plugin' => 'Social',
+            'controller' => 'Logins',
+            'action' => 'callback',
+            'github',
+        ],
+    ]
 ]);
