@@ -46,9 +46,9 @@ Configure::write('Social.google.client_secret', '[CLIENT_SECRET]');
 - Social logins
   - [x] Google
   - [x] Facebook
+  - [x] GitHub
   - [ ] Twitter
   - [ ] LinkedIn
-  - [ ] GitHub
   - [ ] BitBucket
 - [ ] Social share
 - [ ] Social meta
