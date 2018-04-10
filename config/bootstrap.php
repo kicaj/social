@@ -3,7 +3,7 @@
 use Cake\Core\Configure;
 
 Configure::write('Social', [
-    'google' => [
+    'Google' => [
         'login_url' => 'https://accounts.google.com/o/oauth2/v2/auth',
         'login_url_query' => [
             'access_type',
@@ -22,7 +22,7 @@ Configure::write('Social', [
             'google',
         ],
     ],
-    'facebook' => [
+    'Facebook' => [
         'login_url' => 'https://www.facebook.com/v2.11/dialog/oauth',
         'login_url_query' => [
             'client_id',
@@ -39,7 +39,7 @@ Configure::write('Social', [
             'facebook',
         ],
     ],
-    'github' => [
+    'Github' => [
         'login_url' => 'https://github.com/login/oauth/authorize',
         'login_url_query' => [
             'client_id',
