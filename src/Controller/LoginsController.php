@@ -22,16 +22,14 @@ class LoginsController extends AppController
             'callback'
         ]);
 
-        if (isset($this->request->params['pass'][0])) {
-            $provider = $this->request->params['pass'][0];
-
+        if (($provider = Inflector::classify($this->request->getParam('pass.0'))) !== null) {
             // Read configuration
-            $this->config = Configure::readOrFail('Social.' . $provider);
+            $this->config = Configure::readOrFail($this->plugin . '.' . $provider);
 
             // Load provider component
             // @todo Rebuild for separate components between from plugin and from app
             if (!isset($this->config['component'])) {
-                $this->config['component'] = 'Social.' . Inflector::classify($provider);
+                $this->config['component'] = $this->plugin . '.' . $provider;
             }
 
             list(, $component) = pluginSplit($this->config['component']);
