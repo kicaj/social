@@ -27,18 +27,17 @@ class LoginsController extends AppController
             $this->config = Configure::readOrFail($this->plugin . '.' . $provider);
 
             // Load provider component
-            // @todo Rebuild for separate components between from plugin and from app
             if (!isset($this->config['component'])) {
                 $this->config['component'] = $this->plugin . '.' . $provider;
             }
 
-            list(, $component) = pluginSplit($this->config['component']);
-
             $this->loadComponent($this->config['component'], $this->config);
+
+            list(, $component) = pluginSplit($this->config['component']);
 
             $this->component = $this->{$component};
         } else {
-            throw new Exception('Brak providera');
+            throw new \Exception('Brak providera');
         }
     }
 
@@ -68,13 +67,13 @@ class LoginsController extends AppController
 
                     $this->redirect($this->Auth->getConfig('loginRedirect'));
                 } else {
-                    throw new Exception('Z: ' . print_r($user));
+                    throw new \Exception('Z: ' . print_r($user));
                 }
             } else {
-                throw new Exception('Brak parametrow code');
+                throw new \Exception('Brak parametrow code');
             }
         } else {
-            throw new Exception('Brak implementacji interfejsu LoginInterface');
+            throw new \Exception('Brak implementacji interfejsu LoginInterface');
         }
     }
 }
