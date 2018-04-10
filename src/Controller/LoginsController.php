@@ -16,7 +16,11 @@ class LoginsController extends AppController
      */
     public function initialize()
     {
-        parent::initialize();
+    	parent::initialize();
+
+        // Remove layout and view rendering
+        $this->viewBuilder()->setLayout(false);
+        $this->render(false);
 
         $this->Auth->allow([
             'callback'
