@@ -36,8 +36,8 @@ Usage
 -----------
 In Your config/bootstrap add provider configurations
 ```
-Configure::write('Social.google.client_id', '[CLIENT_ID]');
-Configure::write('Social.google.client_secret', '[CLIENT_SECRET]');
+Configure::write('Social.Google.client_id', '[CLIENT_ID]');
+Configure::write('Social.Google.client_secret', '[CLIENT_SECRET]');
 ```
 
 ## TODOs
