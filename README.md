@@ -42,14 +42,15 @@ Configure::write('Social.Google.client_secret', '[CLIENT_SECRET]');
 
 ## TODOs
 
-- [ ] Separate Sign in and Sign up
-- Social logins
+- Social logins (just logins)
   - [x] Google
   - [x] Facebook
   - [x] GitHub
   - [ ] Twitter
   - [ ] LinkedIn
   - [ ] BitBucket
+- [ ] Separate register (and login)
+- [ ] Additional just check (e.g. for leave comments)
 - [ ] Social share
 - [ ] Social meta
 - [x] Expansibility logins, interface class
