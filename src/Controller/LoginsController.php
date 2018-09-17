@@ -62,7 +62,7 @@ class LoginsController extends AppController
                 // Get User based on FormAuthenticate finder
                 // @todo What with other authenticates
                 $user = TableRegistry::get($authenticate->getConfig('userModel'))->find($authenticate->getConfig('finder'))->andWhere([
-                    $authenticate->getConfig('fields.username') => $login,
+                    $authenticate->getConfig('userModel') . '.' . $authenticate->getConfig('fields.username') => $login,
                 ])->first();
 
                 if (!empty($user)) {
