@@ -12,7 +12,7 @@ class LoginsController extends AppController
 {
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function initialize()
     {
@@ -23,7 +23,7 @@ class LoginsController extends AppController
         $this->render(false);
 
         $this->Auth->allow([
-            'callback'
+            'callback',
         ]);
 
         if (($provider = Inflector::classify($this->request->getParam('pass.0'))) !== null) {
