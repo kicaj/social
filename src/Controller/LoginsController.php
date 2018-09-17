@@ -41,7 +41,7 @@ class LoginsController extends AppController
 
             $this->component = $this->{$component};
         } else {
-            throw new \Exception('Brak providera');
+            throw new \Exception(__d('social', 'The provider is not implemented!'));
         }
     }
 
@@ -71,13 +71,13 @@ class LoginsController extends AppController
 
                     $this->redirect($this->Auth->getConfig('loginRedirect'));
                 } else {
-                    throw new \Exception('Z: ' . print_r($user));
+                    throw new \Exception(print_r($user));
                 }
             } else {
-                throw new \Exception('Brak parametrow code');
+                throw new \Exception(__d('social', 'Missing code query parameter'));
             }
         } else {
-            throw new \Exception('Brak implementacji interfejsu LoginInterface');
+            throw new \Exception(__d('social', 'Provider should use LoginInterface.'));
         }
     }
 }
