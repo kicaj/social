@@ -41,7 +41,7 @@ class LoginsController extends AppController
 
             $this->component = $this->{$component};
         } else {
-            throw new \Exception(__d('social', 'The provider is not implemented!'));
+            throw new ProviderException(__d('social', 'The provider is not implemented!'));
         }
     }
 
@@ -71,13 +71,13 @@ class LoginsController extends AppController
 
                     $this->redirect($this->Auth->getConfig('loginRedirect'));
                 } else {
-                    throw new \Exception(print_r($user));
+                    throw new RegisterException(__d('social', 'User {0} is not registered!', $login));
                 }
             } else {
-                throw new \Exception(__d('social', 'Missing code query parameter'));
+                throw new CodeException(__d('social', 'Missing code query parameter.'));
             }
         } else {
-            throw new \Exception(__d('social', 'Provider should use LoginInterface.'));
+            throw new InterfaceException(__d('social', 'Provider should use LoginInterface.'));
         }
     }
 }
