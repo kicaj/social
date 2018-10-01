@@ -57,8 +57,8 @@ class LoginsController extends AppController
     public function callback($provider)
     {
         if ($this->component instanceof LoginInterface) {
-            if (isset($this->request->query['code']) && !empty($code = $this->request->query['code'])) {
-                $login = $this->component->login($this->request->query['code']);
+        	if (isset($this->request->getQuery('code')) && !empty($code = $this->request->getQuery('code'))) {
+        		$login = $this->component->login($code);
 
                 // @todo Get configuration of Authenticate
                 $authenticate = $this->Auth->getAuthenticate('Form');
