@@ -1,9 +1,9 @@
 <?php
 namespace Social\Exception;
 
-use Cake\Core\Exception\Exception;
+use Cake\Datasource\Exception\RecordNotFoundException;
 
-class RegisterException extends Exception
+class RegisterException extends RecordNotFoundException
 {
 
     /**
