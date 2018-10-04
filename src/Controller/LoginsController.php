@@ -16,7 +16,14 @@ class LoginsController extends AppController
 {
 
     /**
-     * @inheritDoc
+     * Social component
+     *
+     * @var string
+     */
+    protected $_component;
+
+    /**
+     * @inheritdoc
      */
     public function initialize()
     {
@@ -43,7 +50,7 @@ class LoginsController extends AppController
 
             list(, $component) = pluginSplit($this->config['component']);
 
-            $this->component = $this->{$component};
+            $this->_component = $this->{$component};
         } else {
             throw new ProviderException(__d('social', 'The provider is not implemented!'));
         }
@@ -56,9 +63,9 @@ class LoginsController extends AppController
      */
     public function callback($provider)
     {
-        if ($this->component instanceof LoginInterface) {
+        if ($this->_component instanceof LoginInterface) {
             if ($this->request->getQuery('code') !== null && !empty($code = $this->request->getQuery('code'))) {
-                $login = $this->component->login($code);
+                $login = $this->_component->login($code);
 
                 // @todo Get configuration of Authenticate
                 $authenticate = $this->Auth->getAuthenticate('Form');
