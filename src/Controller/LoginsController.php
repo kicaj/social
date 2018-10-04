@@ -8,7 +8,6 @@ use Cake\ORM\TableRegistry;
 use Cake\Utility\Inflector;
 use Social\Controller\Component\Interfaces\LoginInterface;
 use Social\Exception\ProviderException;
-use Social\Exception\RegisterException;
 use Social\Exception\CodeException;
 use Social\Exception\InterfaceException;
 
