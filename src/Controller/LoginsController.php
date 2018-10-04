@@ -20,7 +20,7 @@ class LoginsController extends AppController
      */
     public function initialize()
     {
-    	parent::initialize();
+        parent::initialize();
 
         // Remove layout and view rendering
         $this->viewBuilder()->setLayout(false);
@@ -75,7 +75,9 @@ class LoginsController extends AppController
 
                     $this->redirect($this->Auth->getConfig('loginRedirect'));
                 } else {
-                    throw new RegisterException(__d('social', 'User {0} is not registered!', $login));
+                    $this->Flash->error(__d('social', 'User {0} is not registered!', $login));
+
+                    return $this->redirect($this->Auth->getConfig('loginAction'));
                 }
             } else {
                 throw new CodeException(__d('social', 'Missing code query parameter.'));
