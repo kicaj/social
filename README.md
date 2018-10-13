@@ -50,7 +50,6 @@ Configure::write('Social.Google.client_secret', '[CLIENT_SECRET]');
   - [ ] LinkedIn
   - [ ] BitBucket
 - [ ] Separate register (and login)
-- [ ] Additional just check (e.g. for leave comments)
 - [ ] Social share
 - [ ] Social meta
 - [x] Expansibility logins, interface class
