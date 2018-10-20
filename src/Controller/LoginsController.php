@@ -22,7 +22,7 @@ class LoginsController extends AppController
     protected $_component;
 
     /**
-     * @inheritdoc
+     * {@inheritDoc}
      */
     public function initialize()
     {
