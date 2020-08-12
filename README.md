@@ -4,7 +4,7 @@
 
 ## Requirements
 
-It is developed for CakePHP 3.x.
+It is developed for CakePHP 4.x.
 
 ## Installation
 
@@ -19,17 +19,10 @@ composer require kicaj/social dev-master
 Load the Plugin
 -----------
 
-Ensure the Social plugin is loaded in your config/bootstrap.php file
+Ensure the Social plugin is loaded in your src/Application.php file
 
 ```
-Plugin::load('Social', [
-    'bootstrap' => true,
-    'routes' => true,
-]);
-```
-or add manually by `cake` command
-```
-cake plugin load -b -r Social
+$this->addPlugin('Social');
 ```
 
 Usage
