@@ -51,7 +51,7 @@ class LoginsController extends AppController
 
             $this->_component = $this->{$component};
         } else {
-            throw new ProviderException(__d('social', 'The provider is not implemented!'));
+            throw new ProviderException(__d('social', 'The social provider is not implemented!'));
         }
     }
 
@@ -89,7 +89,7 @@ class LoginsController extends AppController
                 throw new CodeException(__d('social', 'Missing code query parameter.'));
             }
         } else {
-            throw new InterfaceException(__d('social', 'Provider should use LoginInterface.'));
+            throw new InterfaceException(__d('social', 'Social provider should use LoginInterface.'));
         }
     }
 }
