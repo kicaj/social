@@ -27,11 +27,14 @@ $this->addPlugin('Social');
 
 Usage
 -----------
-In Your config/bootstrap add provider configurations
+In Your `config/bootstrap.php` or `app_local.php` add provider configurations
 ```
 Configure::write('Social.Google.client_id', '[CLIENT_ID]');
 Configure::write('Social.Google.client_secret', '[CLIENT_SECRET]');
 ```
+
+When user correctly login, you can use event listener named `Social.login`.
+
 
 ## TODOs
 
