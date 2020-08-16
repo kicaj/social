@@ -1,8 +1,7 @@
 <?php
-
 use Cake\Core\Configure;
 
-Configure::write('Social', [
+Configure::write('Social', array_replace_recursive([
     'Google' => [
         'login_url' => 'https://accounts.google.com/o/oauth2/v2/auth',
         'login_url_query' => [
@@ -54,4 +53,4 @@ Configure::write('Social', [
             'github',
         ],
     ]
-]);
+], Configure::read('Social')));

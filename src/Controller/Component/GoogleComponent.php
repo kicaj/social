@@ -13,19 +13,19 @@ class GoogleComponent extends Component implements LoginInterface
     /**
      * Login
      *
-     * @param null|string $code Authorization code
-     * @return $string User e-mail
+     * @param null|string $code Authorization code.
+     * @return $string User e-mail.
      */
-    public function login($code = null)
+    public function login($code = null): string
     {
         $client = new Client();
 
         $response = $client->post('https://accounts.google.com/o/oauth2/token', [
             'code' => $code,
-            'client_id' => $this->_config['client_id'],
-            'client_secret' => $this->_config['client_secret'],
+            'client_id' => $this->getConfig('client_id'),
+            'client_secret' => $this->getConfig('client_secret'),
             'grant_type' => 'authorization_code',
-            'redirect_uri' => Router::url($this->_config['redirect_uri'], true),
+            'redirect_uri' => Router::url($this->getConfig('redirect_uri'), true),
         ], [
             'ssl_verify_peer' => false,
             'ssl_verify_peer_name' => false,
@@ -33,19 +33,19 @@ class GoogleComponent extends Component implements LoginInterface
 
         if ($response->isOk()) {
             $response = $client->get('https://www.googleapis.com/oauth2/v3/tokeninfo', [
-                'id_token' => $response->json['id_token'],
+                'id_token' => $response->getJson()['id_token'],
             ], [
                 'ssl_verify_peer' => false,
                 'ssl_verify_peer_name' => false,
             ]);
 
             if ($response->isOk()) {
-                return $response->json['email'];
+                return $response->getJson()['email'];
             } else {
-                throw new Exception('A: ' . $response->json['error_description']);
+                throw new Exception('A: ' . $response->getJson()['error_description']);
             }
         } else {
-            throw new Exception('B: ' . $response->json['error']);
+            throw new Exception($response->getJson()['error']);
         }
     }
 }

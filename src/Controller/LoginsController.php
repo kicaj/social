@@ -4,11 +4,12 @@ namespace Social\Controller;
 use App\Controller\AppController;
 use Cake\Core\Configure;
 use Cake\Core\Exception\Exception;
+use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Cake\Utility\Inflector;
 use Social\Controller\Component\Interfaces\LoginInterface;
-use Social\Exception\ProviderException;
 use Social\Exception\CodeException;
+use Social\Exception\ProviderException;
 use Social\Exception\InterfaceException;
 
 class LoginsController extends AppController
@@ -19,22 +20,14 @@ class LoginsController extends AppController
      *
      * @var string
      */
-    protected $_component;
+    protected $component;
 
     /**
      * {@inheritDoc}
      */
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
-
-        // Remove layout and view rendering
-        $this->viewBuilder()->setLayout(false);
-        $this->render(false);
-
-        $this->Auth->allow([
-            'callback',
-        ]);
 
         if (($provider = Inflector::classify($this->request->getParam('pass.0'))) !== null) {
             // Read configuration
@@ -49,7 +42,7 @@ class LoginsController extends AppController
 
             list(, $component) = pluginSplit($this->config['component']);
 
-            $this->_component = $this->{$component};
+            $this->component = $this->{$component};
         } else {
             throw new ProviderException(__d('social', 'The social provider is not implemented!'));
         }
@@ -62,28 +55,12 @@ class LoginsController extends AppController
      */
     public function callback($provider)
     {
-        if ($this->_component instanceof LoginInterface) {
+        if ($this->component instanceof LoginInterface) {
             if ($this->request->getQuery('code') !== null && !empty($code = $this->request->getQuery('code'))) {
-                $login = $this->_component->login($code);
+                $login = $this->component->login($code);
 
-                // @todo Get configuration of Authenticate
-                $authenticate = $this->Auth->getAuthenticate('Form');
-
-                // Get User based on FormAuthenticate finder
-                // @todo What with other authenticates
-                $user = TableRegistry::get($authenticate->getConfig('userModel'))->find($authenticate->getConfig('finder'))->andWhere([
-                    $authenticate->getConfig('userModel') . '.' . $authenticate->getConfig('fields.username') => $login,
-                ])->first();
-
-                if (!empty($user)) {
-                    // Manually login
-                    $this->Auth->setUser($user->toArray());
-
-                    $this->redirect($this->Auth->getConfig('loginRedirect'));
-                } else {
-                    $this->Flash->error(__d('social', 'User {0} is not registered!', $login));
-
-                    return $this->redirect($this->Auth->getConfig('loginAction'));
+                if ($login) {
+                    $this->getEventManager()->dispatch(new Event('Social.login', $this, compact('login')));
                 }
             } else {
                 throw new CodeException(__d('social', 'Missing code query parameter.'));
