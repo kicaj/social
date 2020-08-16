@@ -27,7 +27,7 @@ $this->addPlugin('Social');
 
 Usage
 -----------
-In Your `config/bootstrap.php` or `app_local.php` add provider configurations
+In your `config/bootstrap.php` or `app_local.php` add providers configuration
 ```
 Configure::write('Social.Google.client_id', '[CLIENT_ID]');
 Configure::write('Social.Google.client_secret', '[CLIENT_SECRET]');
